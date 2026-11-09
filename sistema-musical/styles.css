@@ -1,0 +1,705 @@
+
+/* =============================================
+   SISTEMA MUSICAL - CSS PRINCIPAL
+   =============================================
+   Aqui ficam os estilos usados nas páginas do sistema.
+   O código foi sendo complementado conforme avançamos
+   nas quatro aulas:
+   Aula 1: estrutura inicial, formulários, botões e menu.
+   Aula 2: títulos, tabelas, filtros e novas cores.
+   Aula 3: formulários divididos, imagens e músicas.
+   Aula 4: novos campos, textos e ajustes para celulares.
+============================================= */
+
+
+/* -----------------------------------------------
+   1. VARIÁVEIS E RESET [AULA 1]
+----------------------------------------------- */
+
+/* Deixamos as principais cores e configurações guardadas
+   aqui para facilitar quando precisarmos mudar alguma coisa. */
+:root {
+    --primary:        #2c3e50;     /* cor escura usada nos títulos e cabeçalhos */
+    --blue:           #3498db;     /* azul dos botões principais */
+    --blue-dark:      #2980b9;     /* azul um pouco mais escuro para quando passa o mouse */
+    --green:          #27ae60;     /* verde usado no botão de músicas */
+    --red:            #e74c3c;     /* vermelho dos botões de exclusão */
+    --red-dark:       #c0392b;
+    --bg:             #f0f2f5;     /* fundo cinza claro das páginas */
+    --surface:        #ffffff;     /* branco dos cartões e formulários */
+    --border:         #dde1e7;     /* cor utilizada nas bordas */
+    --text:           #2c3e50;
+    --text-muted:     #6c757d;     /* texto em um tom mais discreto */
+    --shadow-sm:      0 1px 3px rgba(0,0,0,.08);             /* sombra mais leve */
+    --shadow-md:      0 4px 12px rgba(0,0,0,.10);            /* sombra um pouco mais forte */
+    --radius:         8px;         /* arredondamento dos cantos */
+    --font:           'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Tiramos as margens e os espaços que o navegador coloca
+   automaticamente nos elementos da página. */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configurações que servem como base para o site inteiro. */
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;               /* deixa um espaço confortável entre as linhas */
+    min-height: 100vh;              /* faz o conteúdo ocupar pelo menos a altura da tela */
+}
+
+
+/* -----------------------------------------------
+   2. FORMULÁRIOS [AULA 1]
+----------------------------------------------- */
+
+/* Os formulários ficam dentro de cartões brancos,
+   com espaço interno e uma sombra para dar destaque. */
+form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+/* Dá um espaço entre um campo e outro do formulário. */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* O nome de cada campo fica em cima da área de preenchimento. */
+label {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Deixamos os campos com o mesmo padrão de tamanho e aparência,
+   evitando que cada um fique com uma formatação diferente. */
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);     /* usa a mesma fonte do restante do sistema */
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .2s, box-shadow .2s;       /* deixa a mudança de aparência mais suave */
+}
+
+/* Quando clicamos em um campo para digitar, aparece
+   um destaque azul mostrando onde estamos escrevendo. */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52,152,219,.15);
+}
+
+
+/* -----------------------------------------------
+   3. BOTÕES [AULAS 1, 2 e 3]
+----------------------------------------------- */
+
+/* Juntamos os botões para que todos tenham o mesmo
+   formato, alinhamento e comportamento básico. */
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;            /* deixa o texto e o ícone alinhados */
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;                 /* indica que o botão pode ser clicado */
+    text-decoration: none;           /* tira o sublinhado caso seja um link */
+    white-space: nowrap;              /* impede que o texto quebre em duas linhas */
+    transition: background-color .2s, transform .15s, box-shadow .2s;
+    line-height: 1.4;
+}
+
+/* Botão principal do sistema, usado para destacar as ações.
+   Quando passamos o mouse, ele muda de cor e sobe um pouquinho. */
+.btn-primary {
+    padding: .65rem 1.4rem;
+    font-size: .95rem;
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* O botão de voltar utiliza uma cor mais escura
+   para ficar diferente das outras opções. */
+.btn-back           { background: var(--primary); color: #fff; }
+.btn-back:hover     { background: #1a252f; }
+
+/* Botões de editar e excluir. Cada cor ajuda a identificar
+   rapidamente qual ação será realizada. */
+.btn-edit              { background: var(--blue); color: #fff; }
+.btn-edit:hover         { background: var(--blue-dark); }
+.btn-delete            { background: var(--red);   color: #fff; }
+.btn-delete:hover      { background: var(--red-dark); }
+
+/* O verde foi escolhido para identificar o acesso às músicas. */
+.btn-music          { background: var(--green); color: #fff; }
+.btn-music:hover       { background: #219a52; }
+
+/* O botão do YouTube fica vermelho para combinar
+   com a identidade visual da plataforma. */
+.btn-youtube           { background: #ff0000; color: #fff; }
+.btn-youtube:hover     { background: #cc0000; }
+
+
+/* -----------------------------------------------
+   4. MENSAGENS [AULA 4]
+----------------------------------------------- */
+
+/* Formatação geral dos avisos que aparecem para o usuário,
+   deixando o texto e os possíveis ícones bem organizados. */
+.message {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+/* Usamos cores diferentes para facilitar a identificação dos avisos. */
+.message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.message.error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* Aumenta o espaço disponível para escrever textos maiores,
+   mas deixa o usuário ajustar a altura quando precisar. */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* -----------------------------------------------
+   5. TELA DE LOGIN [AULA 1]
+----------------------------------------------- */
+
+/* Usamos Flexbox para deixar a área de login bem no centro
+   da tela, tanto na horizontal quanto na vertical. */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 1rem;
+}
+
+/* Cartão onde ficam os campos e as informações de acesso.
+   O tamanho máximo evita que ele fique largo demais. */
+.login-card {
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Como o cartão já tem seu próprio visual,
+   retiramos a sombra e o fundo do formulário que fica dentro dele. */
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Deixa o título e a descrição do login centralizados. */
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: .25rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+/* Faz o botão de entrar ocupar todo o espaço horizontal do cartão. */
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: .25rem;
+}
+
+/* Espaço utilizado para mostrar alguma dica ou informação
+   que ajude o usuário durante o acesso. */
+.login-hint {
+    margin-top: 1.25rem;
+    padding: .75rem 1rem;
+    background: var(--bg);
+    border-radius: 6px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.login-hint code {
+    background: #e9ecef;
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .8rem;
+}
+
+
+/* -----------------------------------------------
+   6. LAYOUT BASE [AULA 1]
+----------------------------------------------- */
+
+/* Essa classe organiza o conteúdo principal e mantém
+   as páginas centralizadas, sem ocupar a tela inteira. */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+
+/* -----------------------------------------------
+   7. MENU PRINCIPAL [AULA 1]
+----------------------------------------------- */
+
+/* Mantém o botão de sair posicionado no canto direito. */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+/* Centraliza o cabeçalho e separa ele do conteúdo abaixo. */
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+
+.page-header p { color: var(--text-muted); font-size: 1rem; }
+
+/* Organiza as opções do menu em cartões.
+   A quantidade de colunas muda de acordo com o espaço disponível. */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Cada opção do menu ganha um fundo branco,
+   bordas arredondadas e uma sombra. */
+.menu-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: transform .2s, box-shadow .2s;
+    border: 1px solid var(--border);
+}
+
+/* Ao passar o mouse, o cartão sobe um pouco,
+   criando um pequeno efeito de destaque. */
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.13);
+}
+
+/* O link ocupa o cartão inteiro, então não precisamos
+   clicar exatamente em cima do texto para acessar a opção. */
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.menu-card-icon     { font-size: 2.2rem; margin-bottom: .75rem; }
+.menu-card-title { font-size: 1.05rem; font-weight: 600; color: var(--primary); margin-bottom: .35rem; }
+.menu-card-desc     { font-size: .85rem; color: var(--text-muted); }
+
+
+/* -----------------------------------------------
+   8. TIPOGRAFIA [AULA 2]
+----------------------------------------------- */
+
+/* Define como os títulos h2 vão aparecer nas páginas. */
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+/* Os títulos h3 são menores e aparecem em algumas partes
+   para organizar melhor as informações. */
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem;      /* controla o espaço ao redor do título */
+}
+
+
+/* -----------------------------------------------
+   9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2]
+----------------------------------------------- */
+
+/* Coloca o título de um lado e os botões do outro.
+   Se faltar espaço, eles podem ficar em linhas separadas. */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+}
+
+/* Ajusta o h2 que fica dentro desse cabeçalho,
+   removendo os espaços e a borda que ele teria normalmente. */
+.page-header-bar h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Deixa os botões do cabeçalho próximos e alinhados. */
+.page-header-bar .header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+/* -----------------------------------------------
+   10. FORMULÁRIO EM GRADE [AULAS 3 e 4]
+----------------------------------------------- */
+
+/* Esses campos recebem a mesma aparência dos campos
+   de texto, mesmo tendo funções diferentes. */
+input[type="number"],
+input[type="url"],
+input[type="date"] {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+/* Estilo da área usada para escolher arquivos do computador.
+   A borda pontilhada ajuda a diferenciar esse campo dos outros. */
+input[type="file"] {
+    width: 100%;
+    padding: .5rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    font-size: .9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* As informações menores ficam logo abaixo dos campos,
+   servindo como uma orientação extra para quem está preenchendo. */
+small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
+/* Divide os campos em duas colunas com o mesmo tamanho,
+   deixando o formulário mais organizado. */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+
+/* Quando um campo precisa de mais espaço,
+   essa classe faz ele ocupar as duas colunas. */
+.form-grid .form-group.full {
+    grid-column: 1 / -1;
+}
+
+/* Organiza os botões que aparecem depois dos campos,
+   mantendo um espaço entre eles. */
+.form-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+}
+
+/* Mostra a imagem que já foi cadastrada anteriormente,
+   principalmente quando estamos alterando algum registro. */
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .75rem;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;       /* mantém a imagem no tamanho certo sem esticar */
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.current-image small {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+
+/* -----------------------------------------------
+   11. TABELAS [AULA 2]
+----------------------------------------------- */
+
+/* Coloca a tabela dentro de uma área com fundo branco
+   e mantém os cantos arredondados. */
+.table-container {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+/* Faz as bordas das células ficarem juntas,
+   evitando que apareçam linhas duplicadas. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Define o espaço interno das células e deixa
+   o conteúdo alinhado à esquerda. */
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Os nomes das colunas recebem fundo escuro e texto branco,
+   facilitando a leitura das informações. */
+th {
+    background: var(--primary);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Retira a linha inferior da última linha e destaca
+   uma linha da tabela quando o mouse passa por cima. */
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #f8fafc; }
+
+/* Algumas colunas têm uma largura definida para
+   não atrapalhar a organização das outras informações. */
+.col-foto,
+.col-capa    { width: 90px; white-space: nowrap; }
+.col-youtube { width: 110px; white-space: nowrap; }
+.col-acoes    { white-space: nowrap; }
+
+/* Mantém os botões de cada linha lado a lado. */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Define o tamanho das imagens pequenas que aparecem
+   nas tabelas, como fotos e capas de músicas. */
+.table-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* Espaço que aparece no lugar da imagem quando
+   ainda não existe nenhuma foto ou capa cadastrada. */
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: var(--bg);
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Quando a pesquisa não encontra resultados,
+   essa célula apresenta uma mensagem no centro da tabela. */
+td.empty-cell {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-size: .95rem;
+}
+
+
+/* -----------------------------------------------
+   14. FILTROS [AULA 2]
+----------------------------------------------- */
+
+.filters {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+/* Coloca os filtros lado a lado e permite que
+   eles mudem de posição se a tela ficar pequena. */
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+/* Cada filtro pode aproveitar o espaço disponível,
+   mas sem ficar estreito demais. */
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-item label {
+    font-size: .82rem;
+}
+
+/* Mantém os botões de filtro alinhados e com espaço entre eles. */
+.filter-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+
+/* -----------------------------------------------
+   15. UTILITÁRIOS [AULA 4]
+----------------------------------------------- */
+
+/* Classes simples que podem ser usadas no HTML
+   para ajustar alinhamentos e espaços sem criar novas regras. */
+.text-center { text-align: center; }
+.text-muted    { color: var(--text-muted); font-size: .9rem; }
+
+/* mt controla o espaço acima e mb controla o espaço abaixo. */
+.mt-1 { margin-top: .5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: .5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+
+/* -----------------------------------------------
+   16. RESPONSIVIDADE [AULA 4]
+----------------------------------------------- */
+
+/* Essas mudanças entram em ação quando a tela tem
+   até 768px de largura, como acontece em celulares.
+   Assim, o site consegue se adaptar melhor a telas menores. */
+@media (max-width: 768px) {
+    .container { padding: 16px; }                  /* diminui o espaço nas laterais */
+    h2 { font-size: 1.4rem; }
+    form { padding: 1.25rem; }
+    .form-grid { grid-template-columns: 1fr; }     /* deixa os campos um embaixo do outro */
+    .filter-group      { flex-direction: column; gap: .75rem; }   /* organiza os filtros na vertical */
+    .filter-item       { min-width: 100%; }
+    .table-container { overflow-x: auto; }         /* permite deslizar para os lados quando a tabela não couber */
+    table            { min-width: 560px; }
+    th, td { padding: 10px 12px; font-size: .85rem; }
+    .table-thumbnail,
+    .no-image { width: 48px; height: 48px; }
+    .col-foto, .col-capa { width: 68px; }
+    .action-buttons { flex-wrap: wrap; gap: 4px; }
+    .btn-edit, .btn-delete, .btn-music, .btn-youtube {
+        padding: .4rem .7rem;
+        font-size: .78rem;
+    }
+
+    .menu-grid { grid-template-columns: 1fr; }     /* mostra apenas um cartão por linha */
+}
