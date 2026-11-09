@@ -1,40 +1,43 @@
-# Sistema Musical - Front-End
+#  Sistema Musical
 
-Este repositório contém o desenvolvimento do front-end completo para o Sistema Musical, construído ao longo das Aulas 1 a 4. O projeto apresenta uma interface responsiva, estilizada de forma centralizada e preparada para integração com Back-End (PHP / Banco de Dados na Sprint 2).
+Sistema web completo para gerenciamento de artistas, álbuns e faixas musicais, desenvolvido com **HTML5** e **CSS3** (Flexbox, CSS Grid e Design Responsivo).
 
- Estrutura de Arquivos
+---
 
-O projeto é organizado com todos os arquivos na raiz da aplicação e centralização de estilo:
+##  Sobre o Projeto
 
+O **Sistema Musical** foi construído de forma modular ao longo de 4 etapas (Aulas), estruturando a interface de front-end, formulários interativos, tabelas de dados, filtros de busca e layouts responsivos para dispositivos móveis. A aplicação prepara a base visual completa para integração posterior com back-end em PHP e banco de dados.
+
+---
+
+##  Estrutura de Páginas
+
+- **`login.html`**: Tela de autenticação centralizada com formulário de login e credenciais de teste (`admin` / `123`).
+- **`index.html`**: Menu principal (Dashboard) com cartões de acesso rápido em grid para todas as funcionalidades do sistema.
+- **`listagem_musicas.html`**: Biblioteca musical com visualização de faixas em tabela, filtros por busca/artista/gênero e ações rápidas (Editar, Excluir, Assistir no YouTube).
+- **`cadastro_artista.html`**: Cadastro de artistas com upload de foto (`multipart/form-data`), campos estruturados em grade (`form-grid`) e tabela de artistas cadastrados.
+- **`cadastro_musica.html`**: Cadastro de faixas com seleção de artista, link direto para o YouTube, upload da capa do álbum e campo amplo de texto (`textarea`) para a letra da música.
+- **`styles.css`**: Folha de estilos unificada contendo variáveis globais (`:root`), reset CSS, utilitários, tabelas, botões padronizados e regras de responsividade.
+
+---
+
+## 🛠️ Tecnologias e Conceitos Aplicados
+
+- **HTML5 Semântico**: Uso de formulários com validações nativas (`required`, `type="url"`, `type="file"`), tabelas organizadas e tags semânticas.
+- **CSS3 Moderno**:
+  - **Variáveis CSS (`:root`)**: Padronização de paleta de cores (`--primary`, `--blue`, `--green`, `--red`) e sombras.
+  - **Flexbox & CSS Grid**: Alinhamento de cabeçalhos (`page-header-bar`), menus em cards (`menu-grid`) e formulários de duas colunas (`form-grid`).
+  - **Responsividade (`@media`)**: Layout adaptável para telas de até 768px (smartphones e tablets), empilhando campos e habilitando rolagem lateral em tabelas.
+
+---
+
+##  Estrutura do Repositório
+
+```text
 .
-├── login.html             # Tela 1: Autenticação de Usuário
-├── index.html             # Tela 2: Menu Principal Navegável
-├── cadastro_artista.html  # Tela 3: Cadastro e Listagem de Artistas (Criadores)
-├── cadastro_musica.html   # Tela 4: Cadastro e Listagem de Músicas (Obras)
-├── listagem_musicas.html  # Tela 5: Biblioteca Musical com Filtros
-└── styles.css             # Folha de estilos única centralizada (:root)
-
-
- Telas do Sistema
-
-Login (login.html): Tela centralizada com formulário de autenticação, validação de campos obrigatórios (required) e exibição de credenciais de teste (admin / 123).
-
-Menu Principal (index.html): Painel (Dashboard) com navegação em grade (menu-grid) direcionando para as demais funcionalidades.
-
-Cadastro de Artista (cadastro_artista.html): Formulário em 2 colunas para cadastro do criador com suporte a upload de imagem (enctype="multipart/form-data"), além da tabela de artistas cadastrados.
-
-Cadastro de Música (cadastro_musica.html): Formulário completo para cadastro da obra musical (título, artista via <select>, álbum, gênero, link do YouTube, capa e letra) e tabela local de dados.
-
-Biblioteca Musical (listagem_musicas.html): Tela de exibição das obras cadastradas com barra de filtros (busca geral, por artista e por gênero) e ações diretas (Assistir no YouTube, Editar e Excluir).
-
- Recursos e Tecnologias
-
-HTML5 Semântico: Estruturação limpa com tags semânticas, acessibilidade básica e formulários preparados para submissão POST/GET.
-
-CSS3 Moderno:
-
-Variáveis CSS (:root): Gerenciamento centralizado da paleta de cores (--primary, --blue, --green, --red, etc.), sombras e espaçamentos.
-
-Layout Flexbox e CSS Grid: Alinhamento adaptativo para cartões, formulários de 2 colunas (form-grid) e tabelas.
-
-Design Responsivo (@media max-width: 768px): Adaptação automática para dispositivos móveis (tabelas com rolagem horizontal, botões empilhados e formulários em coluna única).
+├── index.html              # Menu principal (Dashboard)
+├── login.html              # Tela de autenticação
+├── listagem_musicas.html   # Biblioteca de músicas e filtros
+├── cadastro_artista.html   # Formulário e tabela de artistas
+├── cadastro_musica.html    # Formulário e tabela de músicas
+└── styles.css              # Folha de estilos unificada do sistema
