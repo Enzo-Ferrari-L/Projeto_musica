@@ -1,4 +1,4 @@
- Sistema Musical - Front-End
+# Sistema Musical - Front-End
 
 Este repositório contém o desenvolvimento do front-end completo para o Sistema Musical, construído ao longo das Aulas 1 a 4. O projeto apresenta uma interface responsiva, estilizada de forma centralizada e preparada para integração com Back-End (PHP / Banco de Dados na Sprint 2).
 
